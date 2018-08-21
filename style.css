@@ -1,0 +1,587 @@
+body{
+  margin:0;
+  padding:0;
+}
+
+header{
+  background-color:#fff;
+  height:75px;
+  width:100%;
+  position: relative;
+}
+
+h2{
+  text-align: center;
+  font-size: 2em;
+  color:#343434;
+}
+
+/* メニューが表示されている時のみ表示する */
+#overray{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background:rgba(0,0,0,.8);
+  opacity: 0;
+  z-index:-1;
+  transition: all .5s;
+}
+#overray.active{
+  z-index:98;
+  opacity:1;
+}
+
+#logo img{
+  padding-top:5px;
+  height:60px;
+}
+
+#toggle-btn-area{
+  position: absolute;
+  width:30px;
+  height:50px;
+  right:20px;
+  top:10px;
+  cursor: pointer;
+}
+#toggle-btn-area span{
+    position: relative;
+    top:10px;
+    width:30px;
+    height:5px;
+    background:#000;
+    display: block;
+    margin-top:5px;
+}
+
+
+/* スライドするメニューエリア */
+/*  画面幅によって大きくスタイルが変化します  */
+
+/* 共通 */
+#nav-menu ul{
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+#nav-menu ul li a{
+  text-decoration:none;
+}
+/* PC向け */
+@media (min-width:981px){
+  /* まずトグルボタンを非表示にしておく  */
+  #toggle-btn-area{
+    display: none;
+  }
+  #nav-menu{
+    position: absolute;
+    right:10px;
+    top:20px;
+  }
+  #nav-menu ul{
+    display: flex;
+  }
+  #nav-menu ul li a{
+    padding:5px 10px;
+    color:#333;
+  }
+  #nav-menu ul li a:hover{
+    color:#2ECCFA;
+  }
+}
+
+/* スマホ画面 */
+@media (max-width:980px){
+  #nav-menu{
+    z-index:99;
+    position:fixed;
+    right:0;
+    top:0;
+    width:0px;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    transition: all .5s;
+  }
+  #nav-menu.active{
+    width:250px;
+  }
+  #nav-menu ul{
+    margin-top:75px;
+    text-align: center;
+  }
+  #nav-menu ul li a{
+    padding:10px 0;
+    width:100%;
+    display: block;
+    color:#E6E6E6;
+    border-bottom:1px solid #848484;
+  }
+  #nav-menu ul li a:hover{
+    background:#fff;
+    color:#000;
+  }
+}
+
+
+/* トップ画像のスタイル */
+#top-image{
+  position: relative;
+  width:100%;
+  padding-top:50%;
+  overflow: hidden;
+}
+
+#top-image img{
+  position: absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  object-fit: cover;
+}
+
+#top-image h1{
+  position: absolute;
+  top:0;
+  right:10px;
+}
+@media (max-width:580px){
+  #top-image h1{
+    font-size:1em;
+  }
+}
+
+
+/*  アクティビティ部分　*/
+#activities{
+  margin-top:30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+
+#activities > div {
+  width:30%;
+  text-align: center;
+}
+#activities > div i{
+  font-size:3em;
+  color:#fff;
+  border-radius: 50%;
+  padding:15px;
+}
+/* 左 */
+#activities div:nth-child(1) i{
+  background:green;
+}
+#activities div:nth-child(2) i{
+  background:red;
+}
+#activities div:nth-child(3) i{
+  background:blue;
+}
+
+/* スマホ向け */
+@media (max-width:680px){
+  #activities{
+    justify-content:flex-start;
+  }
+  #activities > div{
+    width:90%;
+    margin-top:10px;
+  }
+}
+
+
+/* ギャラリー部分 */
+.gallery{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin:20px 0;
+}
+
+.gallery-item{
+  position: relative;
+  width:19%;
+  padding-top:18%;
+  background:#999;
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-item img{
+  position: absolute;
+  top:0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+
+
+/* メインコンテンツ　ワッパー部分部分 */
+#wrapper{
+  display: flex;
+  justify-content:space-around;
+}
+
+#wrapper > div:nth-of-type(1){
+  width:65%;
+}
+#wrapper > div:nth-of-type(2){
+  width:30%;
+}
+
+/* コンテンツ部分 */
+article.content-area{
+  width:65%;
+  border-right:1px solid #f8f8ff;
+}
+article.content-area ul.tab-menu{
+  display: flex;
+  padding:0;
+  margin:0;
+  list-style: none;
+  justify-content: space-around;
+}
+article.content-area ul.tab-menu li{
+  width: 100%;
+  padding:10px 0;
+  display: block;
+  text-align: center;
+  border-bottom:2px solid #e6e6fa;
+  background:#dcdcdc;
+  cursor:pointer;
+
+}
+
+article.content-area ul.tab-menu li:hover{
+  background:#f8f8ff;
+}
+
+article.content-area ul.tab-menu li.active{
+  background:#ffffe0;
+  border-bottom:2px solid #ffd700;
+  cursor:not-allowed;
+}
+
+
+article.content-area ul.tab-menu li a{
+  width: 100%;
+}
+
+
+/* 記事一覧部分のスタイル */
+
+section.posts ul{
+  display: none;
+}
+
+section.posts ul.active{
+  display: block;
+  animation: show-posts .5s linear 0s;
+}
+
+@keyframes show-posts{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+
+section.posts ul li{
+  display: flex;
+  border-bottom:1px solid #f5f5f5;
+  margin-top:10px;
+}
+/* 画像部分 */
+section.posts ul li .thumb{
+  position: relative;
+  width:30%;
+  padding-top:25%;
+  overflow: hidden;
+}
+
+section.posts ul li .thumb img{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+/* info部分 */
+section.posts ul li .post-info{
+  width:68%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left:10px;
+}
+
+
+section.posts ul li .post-info a{
+  text-decoration: none;
+}
+section.posts ul li .post-info small{
+  color:#777;
+  margin-top:auto;
+
+}
+
+/* サイドバーエリア */
+aside.sidebar{
+  width:30%;
+}
+
+aside.sidebar .sidebar-content{
+  text-align: center;
+}
+/* 最初要素以外を洗濯 */
+aside.sidebar .sidebar-content:nth-of-type(n+2){
+  margin-top:100px;
+}
+
+
+aside.sidebar .sidebar-content h4{
+  padding-bottom:10px;
+  border-bottom:2px solid #3f729b;
+}
+
+aside.sidebar .sidebar-content i{
+  font-size: 3em;
+  color:white;
+  padding:20px 20px;
+  border-radius:50%;
+}
+
+aside.sidebar .sidebar-content:nth-child(1) i{
+  background:#cd201f;
+}
+aside.sidebar .sidebar-content:nth-child(2) i{
+  background:#55acee;
+}
+aside.sidebar .sidebar-content:nth-child(3) i{
+  background:linear-gradient(to bottom right, red, blue);
+}
+
+
+/*  小画面  */
+@media (max-width:580px){
+  #wrapper{
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+  /* さらにwidthを修正する */
+  /* 右側ポスト一覧部分 */
+  article.content-area{
+    width:98%;
+    border-right:none;
+  }
+  /* サイドバーエリア  */
+  aside.sidebar{
+    width:90%;
+  }
+}
+
+/* フッターエリア  */
+#outer{
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer{
+  margin-top:auto;
+  background:#000;
+  color:#fff;
+  text-align: center;
+  padding:20px 0;
+}
+
+
+/* 画像プレビューエリア */
+#photo-area{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background:#000;
+  top:0;
+  left:0;
+
+}
+#photo-area span{
+  cursor: pointer;
+  color:#fff;
+  font-size:3em;
+  position: absolute;
+  z-index:99;
+}
+#photo-area span.close{
+  top:0;
+  right:30px;
+}
+
+#photo-area span.prev{
+  top:50%;
+  bottom:50%;
+  margin:auto 0;
+  left:0;
+}
+#photo-area span.next{
+  top:50%;
+  bottom:50%;
+  margin:auto 0;
+  right:0;
+}
+#photo-area .img-area{
+  position: absolute;
+  width:85%;
+  height:90%;
+  right:0;
+  left:0;
+  top:0;
+  bottom:0;
+  margin:auto auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#photo-area .img-area img{
+  max-width: 100%;
+  height:auto;
+}
+
+
+
+
+/* ハミングバード画像は高さが固定されている */
+
+
+
+
+/* オススメ記事一覧部分のスタイル */
+
+.pickup-post{
+  width:80%;
+  margin:0 auto;
+  border:1px solid #000;
+  position: relative;
+}
+
+.fuild-area{
+  overflow: scroll;
+  display: flex;
+}
+
+.fuild-area .item {
+  position:relative;
+  width:30%;
+  padding-top:30%;
+  /* これで変な伸縮を防ぐ */
+  flex: none;
+}
+
+.fuild-area .item img{
+  width:100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.pickup-post span{
+    cursor:pointer;
+    font-size:2em;
+    z-index:99;
+}
+.pickup-post span:hover{
+  color:#fff;
+}
+
+.pickup-post span:nth-of-type(1){
+  position: absolute;
+  top:50%;
+  left:0;
+}
+
+.pickup-post span:nth-of-type(2){
+  position: absolute;
+  top:50%;
+  right:0;
+}
+
+
+
+
+
+
+
+/* うんこ */
+
+.slide-container{
+  width:80%;
+  margin:20px auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.slide-container .slider{
+  overflow: hidden;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.slide-container .slider .item{
+  /* flexの伸縮を廃止する */
+  flex:none;
+  width:175px;
+  box-sizing: border-box;
+  margin:0 5px;
+}
+
+.slide-container .slider .item img{
+  width:100%;
+  height:120px;
+  object-fit: cover;
+}
+
+.slide-container .slider strong{
+  font-size:14px;
+}
+
+.slide-container .slider p{
+  padding:0;
+  margin:0;
+  font-size:13px;
+}
+
+
+.slide-container span{
+    cursor:pointer;
+    font-size:2em;
+    z-index:99;
+    background:rgba(192,192,192,.6);
+    padding:3px 10px;
+}
+.slide-container span:hover{
+  color:#fff;
+}
+
+.slide-container span:nth-of-type(1){
+  position: absolute;
+  top:50%;
+  left:0;
+}
+
+.slide-container span:nth-of-type(2){
+  position: absolute;
+  top:50%;
+  right:0;
+}
